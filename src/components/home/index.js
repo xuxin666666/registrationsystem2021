@@ -16,11 +16,11 @@ const Home = ({ selected }) => {
 
     let toRegister = () => {
         history.push('/register')
-        selected('register')
+        selected('/register')
     }
 
     useEffect(() => {
-        selected('home')
+        selected('/home')
     })
 
 

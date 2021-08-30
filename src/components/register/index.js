@@ -42,7 +42,7 @@ const Register = ({selected}) => {
     }
 
     useEffect(() => {
-        selected('register')
+        selected('/register')
     })
 
     return (
