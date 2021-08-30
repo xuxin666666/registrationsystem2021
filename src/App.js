@@ -1,7 +1,7 @@
 import React from 'react'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import { Layout, Menu } from 'antd'
-import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom'
+import { HashRouter, Switch, Route, Link, Redirect } from 'react-router-dom'
 
 import Home from './components/home'
 import Qkadmin from './components/qkadmin'
@@ -9,36 +9,32 @@ import Register from './components/register'
 import Success from './components/register/Success'
 
 import bgImage from './asset/image/bgImage.jpg'
-import logo from './asset/image/logo.png'
-import './asset/css/App.css'
+import './asset/css/App.less'
 
 const { Header, Content } = Layout;
 
 const App = () => {
-	let [select, setSelect] = useState(window.location.pathname)
+	let [select, setSelect] = useState(window.location.hash.split('/')[1])
 
 	let Select = () => {
-		setSelect(window.location.pathname)
+		setSelect(window.location.hash.split('/')[1])
 	}
 
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<Layout style={{height: '100%', background: 'none'}}>
 				<Header id='app_header'>
 					<div className='logo'>
-						<img src={logo} width='40px' />
+						<img src='logo.png' width='40px' alt='logo' />
 						QKTeam
 					</div>
-					<Menu mode='horizontal' id='app_menu' selectedKeys={select} onSelect={Select}>
-						<Menu.Item key='/home'>
+					<Menu mode='horizontal' id='app_menu' selectedKeys={select || 'home'} onSelect={Select}>
+						<Menu.Item key='home'>
 							<Link to="/home" >主页</Link>
 						</Menu.Item>
-						<Menu.Item key='/register'>
+						<Menu.Item key='register'>
 							<Link to="/register" >报名</Link>
 						</Menu.Item>
-						{/* <Menu.Item key='/qkadmin'>
-							<Link to="/qkadmin" >qkadmin</Link>
-						</Menu.Item> */}
 					</Menu>
 				</Header>
 				<Layout style={{marginTop: 64, height: '100%'}} id="app_body">
@@ -49,7 +45,9 @@ const App = () => {
 							<Route exact path='/home' >
 								<Home selected={setSelect} />
 							</Route>
-							<Route path='/register' component={Register} />
+							<Route path='/register'>
+								<Register selected={setSelect} />
+							</Route>
 							<Route path='/qkadmin' >
 								<Qkadmin selected={setSelect} />
 							</Route>
@@ -57,14 +55,13 @@ const App = () => {
 								<Success selected={setSelect} />
 							</Route>
 						</Switch>
-						
 					</Content>
 					
 					<footer id='app_footer'>晴空工作室&copy;2021 招新</footer>
 				</Layout>
 
 			</Layout>
-		</BrowserRouter>
+		</HashRouter>
 	);
 }
 

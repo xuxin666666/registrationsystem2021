@@ -6,7 +6,7 @@ const Success = ({selected}) => {
 
     const goHome = () => {
         history.push('/home')
-        selected('/home')
+        selected('home')
     }
 
     return (

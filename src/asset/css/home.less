@@ -1,0 +1,68 @@
+@topInterval: 230;
+
+.loop(@i) when (@i >= 0) {
+    .loop((@i - 1)); 
+
+    .home_image_left_@{i},
+    .home_image_right_@{i} {
+        box-shadow   : 2px 2px 5px #ccc;
+        border-radius: 5px !important;
+        margin       : 10px 0 10px 0 !important;
+        width        : 240px;
+
+        .ant-card-body {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        div {
+            text-align: center;
+        }
+        @media screen and (min-width: 900px) {
+            position   : absolute !important;
+            margin-left: -300px !important;
+            top        : (@i * @topInterval + 0px);
+        }
+    }
+
+    .home_image_left_@{i} {
+        @media screen and (max-width: 900px) {
+            float       : left;
+            margin-right: 500px !important;
+        }
+
+        @media screen and (min-width: 900px) {
+            transform  : rotate(-10deg);
+        }
+    }
+
+    .home_image_right_@{i} {
+        @media screen and (max-width: 900px) {
+            float       : right;
+            margin-left: 500px !important;
+        }
+
+        @media screen and (min-width: 900px) {
+            transform  : rotate(10deg);
+        }
+    }
+}
+
+.loop(4);
+
+#home_typography {
+    left    : 50%;
+    position: relative;
+    font-family: 华文新魏;
+    font-size: 20px;
+
+    @media screen and (max-width: 900px) {
+        max-width: 500px;
+        transform: translateX(-50%);
+    }
+
+    @media screen and (min-width: 900px) {
+        max-width: 400px;
+        transform: translateX(-20%);
+    }
+}

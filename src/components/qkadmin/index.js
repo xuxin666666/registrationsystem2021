@@ -1,14 +1,10 @@
 import { useEffect } from 'react';
 import { Button, Card, Table } from 'antd';
 import { useHistory } from 'react-router-dom'
+import axios from 'axios';
 
 const Qkadmin = ({selected}) => {
     let history = useHistory()
-
-    let backhome = () => {
-        history.push('/home')
-        selected('/home')
-    }
 
     let sendEmail = (email) => {
 
@@ -35,6 +31,7 @@ const Qkadmin = ({selected}) => {
     ]
 
     useEffect(() => {
+        const daat = axios.get()
         data.map((item) => {
             let email = item.qq + '@qq.com'
             item['email'] = email

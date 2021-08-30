@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
     Form,
@@ -8,14 +8,15 @@ import {
     Radio,
     Card,
     Col,
-    Row
+    Row,
+    message
 } from 'antd'
 
-import '../../asset/css/register.css'
+import '../../asset/css/register.less'
 
 const Item = Form.Item
 
-const Register = () => {
+const Register = ({selected}) => {
     let history = useHistory()
 
     let [loading, setLoading] = useState(false)
@@ -29,16 +30,19 @@ const Register = () => {
 
     };
 
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
         setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-            history.replace('/success')
-        }, 3000)
-        console.log(values)
-
-        
+        const data = axios.put('', values)
+        if(1){
+            message.error('提交表单失败', 2)
+        }
+        setLoading(false)
+        history.replace('/success')
     }
+
+    useEffect(() => {
+        selected('register')
+    })
 
     return (
         <Row>
