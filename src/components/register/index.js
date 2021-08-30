@@ -32,11 +32,12 @@ const Register = ({selected}) => {
 
     const onFinish = async (values) => {
         setLoading(true)
-        const data = axios.put('', values)
-        if(1){
-            message.error('提交表单失败', 2)
-        }
+        // const res = await axios.post('/register', values)
         setLoading(false)
+        // if(res.status !== 1000){
+        if(1){
+            // return message.error('提交表单失败', 2)
+        }
         history.replace('/success')
     }
 
@@ -73,12 +74,12 @@ const Register = ({selected}) => {
                         <Item
                             name='sex'
                             label='性别'
-                            initialValue='secret'
+                            initialValue={2}
                         >
                             <Radio.Group>
-                                <Radio value='male'>男</Radio>
-                                <Radio value='female'>女</Radio>
-                                <Radio value='secret'>保密</Radio>
+                                <Radio value={0}>男</Radio>
+                                <Radio value={1}>女</Radio>
+                                <Radio value={2}>保密</Radio>
                             </Radio.Group>
                         </Item>
                         <Item
