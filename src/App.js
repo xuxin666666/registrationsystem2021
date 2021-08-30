@@ -14,11 +14,7 @@ import './asset/css/App.less'
 const { Header, Content } = Layout;
 
 const App = () => {
-	let [select, setSelect] = useState(window.location.hash.split('/')[1])
-
-	let Select = () => {
-		setSelect(window.location.hash.split('/')[1])
-	}
+	let [select, setSelect] = useState(null)
 
 	return (
 		<HashRouter>
@@ -28,7 +24,7 @@ const App = () => {
 						<img src='logo.png' width='40px' alt='logo' />
 						QKTeam
 					</div>
-					<Menu mode='horizontal' id='app_menu' selectedKeys={select || 'home'} onSelect={Select}>
+					<Menu mode='horizontal' id='app_menu' selectedKeys={select || 'home'}>
 						<Menu.Item key='home'>
 							<Link to="/home" >主页</Link>
 						</Menu.Item>
