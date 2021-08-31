@@ -7,6 +7,8 @@
 
 # testing
 /coverage
+*.rar
+*.zip
 
 # production
 /build
