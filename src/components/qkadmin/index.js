@@ -3,14 +3,14 @@ import { Button, Card, message, Table } from 'antd';
 import axios from 'axios';
 
 const Qkadmin = ({selected}) => {
-    
+
     let sendEmail = (email) => {
 
     }
 
     let columns = [
-        {title: '名字', dataIndex: 'name', key: 'name'},
-        {title: '性别', dataIndex: 'sex', key: 'sex', render(h) {
+        {title: '名字', dataIndex: 'name'},
+        {title: '性别', dataIndex: 'gender', render(h) {
             switch (h) {
                 case 0:
                     return (<div>男</div>)
@@ -20,10 +20,10 @@ const Qkadmin = ({selected}) => {
                     return (<div>保密</div>)
             }
         },},
-        {title: '电话号码', dataIndex: 'phone', key: 'phone'},
-        {title: 'QQ', dataIndex: 'qq', key: 'qq'},
-        {title: '个人介绍', dataIndex: 'introduction', key: 'introduction'},
-        {title: '掌握技能', dataIndex: 'masterSkill', key: 'masterSkill'},
+        {title: '电话号码', dataIndex: 'phone'},
+        {title: 'QQ', dataIndex: 'qq'},
+        {title: '个人介绍', dataIndex: 'self_introduction'},
+        {title: '掌握技能', dataIndex: 'spacialty'},
         {title: '', dataIndex: 'email', render(h) {
             return (
                 <Button onClick={sendEmail(h)}>发送邮件</Button>
@@ -38,7 +38,7 @@ const Qkadmin = ({selected}) => {
     ]
 
     useEffect(async () => {
-        const res = await axios.get('/qkadmin')
+        const res = await axios.get('/admin/all')
         if(res.status !== 1000){
             return message.error('请求数据失败', 10)
         }

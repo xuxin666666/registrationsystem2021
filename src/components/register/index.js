@@ -32,11 +32,12 @@ const Register = ({selected}) => {
 
     const onFinish = async (values) => {
         setLoading(true)
-        // const res = await axios.post('/register', values)
+        const res = await axios.post('/register/submit', values)
         setLoading(false)
         // if(res.status !== 1000){
         if(1){
             // return message.error('提交表单失败', 2)
+            message.error('提交表单失败', 2)
         }
         history.replace('/success')
     }
@@ -62,7 +63,7 @@ const Register = ({selected}) => {
                         onFinish={onFinish}
                     >
                         <Item
-                            name='username'
+                            name='name'
                             label='姓名'
                             rules={[
                                 { required: true, message: '姓名不能为空' }
@@ -72,7 +73,7 @@ const Register = ({selected}) => {
                             <Input placeholder='请输入你的姓名' />
                         </Item>
                         <Item
-                            name='sex'
+                            name='gender'
                             label='性别'
                             initialValue={2}
                         >
@@ -94,7 +95,7 @@ const Register = ({selected}) => {
                             <Input type='tel' placeholder='请输入你的电话号码' />
                         </Item>
                         <Item
-                            name='QQ'
+                            name='qq'
                             label='QQ'
                             rules={[
                                 { required: true, message: 'QQ不能为空' }
@@ -104,7 +105,7 @@ const Register = ({selected}) => {
                             <Input placeholder='请输入你的QQ' />
                         </Item>
                         <Item
-                            name='introduction'
+                            name='self_introduction'
                             label='个人介绍'
                             rules={[
                                 { required: true, message: '个人介绍不能为空' }
@@ -117,7 +118,7 @@ const Register = ({selected}) => {
                             />
                         </Item>
                         <Item
-                            name='masterSkill'
+                            name='specialty'
                             label='掌握技能'
                             initialValue=''
                         >
