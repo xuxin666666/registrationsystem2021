@@ -34,10 +34,8 @@ const Register = ({selected}) => {
         setLoading(true)
         const res = await axios.post('/register/submit', values)
         setLoading(false)
-        // if(res.status !== 1000){
-        if(1){
-            // return message.error('提交表单失败', 2)
-            message.error('提交表单失败', 2)
+        if(res.status !== 200){
+            return message.error('提交表单失败', 2)
         }
         history.replace('/success')
     }
